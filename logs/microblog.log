@@ -69,3 +69,4 @@ jinja2.exceptions.UndefinedError: 'forn' is undefined
 2020-08-26 11:25:16,249 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
 2020-08-26 11:27:40,992 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
 2020-08-26 11:35:41,367 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 12:06:01,571 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]

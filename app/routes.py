@@ -34,43 +34,53 @@ def index():
         app.config['POSTS_PER_PAGE'],
         False
     )
-    # posts = current_user.followed_posts().all()
-    # posts = [
-    #     {
-    #         'author':{'username':'John'},
-    #         'body': 'Beautiful day in Portland!'
-    #     },
-    #     {
-    #         'author':{'username':'Susan'},
-    #         'body': 'Avengers movie was so cool!'
-    #     },
-    #     {
-    #         'author':{'username':'Brandon'},
-    #         'body': 'Damn, I forgot to bring my umbrella'
-    #     },
-    #     {
-    #         'author':{'username':'Andy'},
-    #         'body': 'I really love database'
-    #     },
-    #     {
-    #         'author':{'username':'Charles'},
-    #         'body': 'The food was awesome'
-    #     }
-    # ]
+    next_url = url_for('index', page = posts.next_num) if posts.has_next else None
+    prev_url = url_for('index', page = posts.prev_num) if posts.has_prev else None
 
     # converts a template into a complete HTML : rendering
-    return render_template('index.html', title='Home Page', form=form, posts = posts.items)
+    return render_template('index.html', title='Home Page', form=form, posts = posts.items, next_url=next_url, prev_url=prev_url)
+
+@app.route('/explore')
+@login_required
+def explore():
+    # paginate shows just a limited number of posts at a time
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(
+        Post.timestamp.desc()
+    ).paginate(
+        # page number starts from 1
+        page,
+        app.config['POSTS_PER_PAGE'],
+        False
+    )
+
+    # if there is a next page or previous page, it will set to the URL returned by url_for()
+    next_url = url_for('explore', page = posts.next_num) if posts.has_next else None
+    prev_url = url_for('explore', page = posts.prev_num) if posts.has_prev else None
+
+    return render_template('index.html', title='Explore', posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 @app.route('/user/<username>')
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
+    page = request.args.get('page', 1, type=int)
+    posts = user.posts.order_by(
+        Post.timestamp.desc()
+    ).paginate(
+        # page number starts from 1
+        page,
+        app.config['POSTS_PER_PAGE'],
+        False
+    )
+
+    # if there is a next page or previous page, it will set to the URL returned by url_for()
+    next_url = url_for('user', username=username, page = posts.next_num) if posts.has_next else None
+    prev_url = url_for('user', username=username, page = posts.prev_num) if posts.has_prev else None
+
     form = EmptyForm()
-    return render_template('user.html', title="User Profile", user=user, posts=posts, form=form)
+    return render_template('user.html', user=user, posts=posts.items, form=form, 
+                            prev_url=prev_url, next_url=next_url)
 
 
 # login function accepts GET and POST requests. GET: return info to client, POST: browser submits form data to the server
@@ -179,8 +189,3 @@ def unfollow(username):
     else:
         return redirect(url_for('index'))
 
-@app.route('/explore')
-@login_required
-def explore():
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', title='Explore', posts=posts)

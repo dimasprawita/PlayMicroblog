@@ -23,4 +23,10 @@ render index.html it needs to embed it inside base.html -->
     <!-- <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div> -->
         {% include '_post.html' %}
     {% endfor %}
+    {% if prev_url %}
+    <a href="{{ prev_url }}"> Newer posts</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}"> Older posts</a>
+    {% endif %}
 {% endblock %}
