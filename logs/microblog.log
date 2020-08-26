@@ -1,0 +1,71 @@
+2020-08-25 16:41:15,740 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-25 16:41:30,602 ERROR: Exception on /edit_profile [POST] [in c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 2098, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-08-25 16:43:28,983 ERROR: Exception on /edit_profile [POST] [in c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 2098, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-08-25 16:47:53,895 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 09:46:27,206 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 09:46:54,213 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 10:18:52,146 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 10:19:15,526 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 10:20:10,744 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 10:34:50,458 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 11:24:40,791 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 11:24:48,272 ERROR: Exception on /index [GET] [in c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\Projects\Python\Microblog\app\routes.py", line 56, in index
+    return render_template('index.html', title='Home Page', form=form, posts = posts)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Projects\Python\Microblog\app\templates\index.html", line 3, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Projects\Python\Microblog\app\templates\base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "D:\Projects\Python\Microblog\app\templates\index.html", line 17, in block "content"
+    {{ forn.submit() }}
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\jinja2\environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'forn' is undefined
+2020-08-26 11:25:16,249 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 11:27:40,992 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 11:35:41,367 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
