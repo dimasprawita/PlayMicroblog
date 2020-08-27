@@ -30,6 +30,10 @@ to be given as an argument -->
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
+    <p>
+        Forgot your password?
+        <a href="{{ url_for('reset_password_request') }}">Click to Reset it</a>
+    </p>
     <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
     <p>{{ form.submit() }}</p>
 </form>

@@ -70,3 +70,25 @@ jinja2.exceptions.UndefinedError: 'forn' is undefined
 2020-08-26 11:27:40,992 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
 2020-08-26 11:35:41,367 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
 2020-08-26 12:06:01,571 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:64]
+2020-08-26 14:57:10,873 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:68]
+2020-08-26 15:32:20,073 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:68]
+2020-08-26 15:32:39,916 ERROR: Exception on /reset_password_request [POST] [in c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\dim_e\.virtualenvs\microblog-m8krf4d_\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Python\Microblog\app\routes.py", line 201, in reset_password_request
+    send_password_reset_email(user)
+  File "D:\Projects\Python\Microblog\app\email.py", line 19, in send_password_reset_email
+    token = user.get_reset_password_token()
+AttributeError: 'User' object has no attribute 'get_reset_password_token'
+2020-08-26 15:33:16,793 INFO: Microblog startup [in D:\Projects\Python\Microblog\app\__init__.py:68]

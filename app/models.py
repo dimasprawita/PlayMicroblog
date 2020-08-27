@@ -1,9 +1,10 @@
-from app import db
+from app import db, app, login
 from _datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from app import login
 from hashlib import md5
+from time import time
+import jwt
 
 # a model is typically a python class with attributes that match the columns of
 # a corresponding database table
@@ -84,6 +85,26 @@ class User(UserMixin, db.Model):
         )
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.timestamp.desc())
+
+    # generates a JWT token as a string
+    def get_reset_password_token(self, expires_in=600):
+        return jwt.encode(
+            {
+                'reset_password':self.id,
+                'exp':time()+expires_in
+            },
+            app.config['SECRET_KEY'],
+            algorithm='HS256'
+        ).decode('utf-8')
+
+    # it can be invoked directly from the class. it does not receive the class as a first argument
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return User.query.get(id)
 
     # tells Python how to pront objects of this class
     # useful for debugging

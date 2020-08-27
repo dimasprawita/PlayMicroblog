@@ -14,6 +14,7 @@ from flask_login import LoginManager
 
 import logging, os
 from logging.handlers import SMTPHandler, RotatingFileHandler
+from flask_mail import Mail
 
 
 # creates application object as an instance of Flask
@@ -28,6 +29,9 @@ migrate = Migrate(app,db)
 # created and initiliazied flask-login
 login = LoginManager(app)
 login.login_view = 'login'
+
+# create a mail instance
+mail = Mail(app)
 
 # creates a SMTPHandler instance, sets its level so that it only reports errors
 if not app.debug:
